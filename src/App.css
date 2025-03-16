@@ -14,3 +14,11 @@
 .board-row{
 display: flex;
 }
+.status{
+    font:15px;
+    border-width: 3px;
+    border-color: rgb(155, 0, 0);
+    min-width: 200px;
+    min-height: 30px;
+    
+}
