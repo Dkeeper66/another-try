@@ -1,29 +1,50 @@
 import './App.css'
-import React from 'react'
+import React, { useState } from 'react'
 
 
-
-const Profile = (props)=>{
-  let isTrue = props.isTrue
+const Profile = ()=>{
   return(
     <>
     <img
     src='https://i.imgur.com/MK3eW3As.jpg'
     alt='nu hz kto'
     />
-    <h1>O kak {isTrue && 'vot tak'} </h1>
     </>
   )
 }
 
 export default function App(){
-  
+  const [task, setTask] = useState('')
+  const [taskList, setTaskList] = useState([])
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    const objTask ={
+      name: task,
+      status: 'true',
+      id: Date.now()
+    }
+    setTaskList([...taskList,objTask])
+    setTask('')
+  }
+  const listItems = taskList.map(({task, name, id, status })=> <li key={id}>{name}, {id}, {status}</li>)
   return(
     <>
     <div>look at them</div>
-    <Profile isTrue = {true}/>
-    <Profile isTrue = {false}/>
-    <Profile isTrue = {true}/>
+    <Profile />
+    <Profile />
+    <Profile />
+    <form onSubmit={handleSubmit}>
+    <input 
+    value={task}
+    type='text'
+    required
+    onChange={(e)=>setTask(e.target.value)}
+    />
+    <button
+    type='sumbit'
+    >Sumbit</button>
+    </form>
+    <ul>{listItems}</ul>
     </>
   )
 }
