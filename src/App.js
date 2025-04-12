@@ -26,7 +26,7 @@ export default function App(){
     setTaskList([...taskList,objTask])
     setTask('')
   }
-  const listItems = taskList.map(({task, name, id, status })=> <li key={id}>{name}, {id}, {status}</li>)
+  const listItems = taskList.map(({ name, id, status })=> <li key={id}>{name}, {id}, {status}</li>)
   return(
     <>
     <div>look at them</div>
