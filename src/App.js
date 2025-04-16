@@ -26,7 +26,12 @@ export default function App(){
     setTaskList([...taskList,objTask])
     setTask('')
   }
-  const listItems = taskList.map(({ name, id, status })=> <li key={id}>{name}, {id}, {status}</li>)
+  const listItems = taskList.map(({ name, id, status })=>
+    <form className='taskshow'>
+    <li key={id}>{name}, {id}, {status}</li>
+    <input type='checkbox'></input>
+    </form>
+)
   return(
     <>
     <div>look at them</div>
