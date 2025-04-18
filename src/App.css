@@ -26,3 +26,10 @@ display: flex;
     display: flex;
     flex-direction: row;
 }
+#trueTask{
+    text-decoration: line-through;
+    color: green;
+}
+#falseTask{
+    color: red;
+}

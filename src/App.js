@@ -20,17 +20,30 @@ export default function App(){
     e.preventDefault()
     const objTask ={
       name: task,
-      status: 'true',
+      status: false,
       id: Date.now()
     }
     setTaskList([...taskList,objTask])
     setTask('')
   }
-  const listItems = taskList.map(({ name, id, status })=>
-    <form className='taskshow'>
-    <li key={id}>{name}, {id}, {status}</li>
-    <input type='checkbox'></input>
-    </form>
+  const toggleStatus = (id) =>{
+    setTaskList(
+      taskList.map((task) => 
+        task.id === id ? {...task, status: !task.status} : task)
+      )
+  }
+  
+  const listItems = taskList.map(({ name, id, status })=>{
+    let styleID = 'falseTask'
+    if (status === true){styleID='trueTask'}
+    return(
+    <form className='taskshow' key={id}>
+      <li id={styleID}>{name}, {id}, {status.toString()}</li>
+      <input 
+      type='checkbox'
+      value={status}
+      onChange={() => toggleStatus(id)}></input>
+    </form>)}
 )
   return(
     <>
