@@ -15,7 +15,7 @@ const Profile = ()=>{
 
 const Counters = ({taskList})=>{
   const doneCount = taskList.filter(task => task.status === true).length
-  const undoneCount = taskList.filter(task => task.status === false).length
+  const undoneCount = taskList.filter(task => task.status !== true).length
   const sumCount = taskList.length
   return(
     <>
@@ -45,6 +45,11 @@ export default function App(){
         task.id === id ? {...task, status: !task.status} : task)
       )
   }
+
+  const handleRedacted = (e) => {
+    e.preventDefault()
+    alert('Плейсхолдер')
+  }
   
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
@@ -52,6 +57,9 @@ export default function App(){
     return(
     <form className='taskshow' key={id}>
       <li id={styleID}>{name}, {id}, {status.toString()}</li>
+      <button
+      onClick={handleRedacted}
+      >Редактировать</button>
       <input 
       type='checkbox'
       value={status}
