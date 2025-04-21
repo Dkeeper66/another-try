@@ -13,6 +13,19 @@ const Profile = ()=>{
   )
 }
 
+const Counters = ({taskList})=>{
+  const doneCount = taskList.filter(task => task.status === true).length
+  const undoneCount = taskList.filter(task => task.status === false).length
+  const sumCount = taskList.length
+  return(
+    <>
+    <div>Всего задач {sumCount}</div>
+    <div>Выполнено {doneCount}</div>
+    <div>Не выполнено {undoneCount}</div>
+    </>
+  )
+}
+
 export default function App(){
   const [task, setTask] = useState('')
   const [taskList, setTaskList] = useState([])
@@ -63,6 +76,7 @@ export default function App(){
     >Sumbit</button>
     </form>
     <ul>{listItems}</ul>
+    <Counters taskList={taskList}/>
     </>
   )
 }
