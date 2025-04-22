@@ -21,6 +21,7 @@ export default function App(){
   const [taskList, setTaskList] = useState([])
   const [editedTask, setEditedTask] = useState(null)
   const [showEdit, setShowEdit] = useState(null)
+  
   const handleSubmit = (e)=>{
     e.preventDefault()
     const objTask ={
@@ -60,6 +61,10 @@ export default function App(){
     const newList = taskList.filter(task => task.id !== id)
     setTaskList(newList)
 
+  }
+
+  const handleDeleteAll = ()=>{
+    setTaskList([])
   }
   
   const listItems = taskList.map(({ name, id, status })=>{
@@ -120,6 +125,12 @@ export default function App(){
     >Sumbit</button>
     </form>
     <ul>{listItems}</ul>
+    <button
+    type='button'
+    onClick={handleDeleteAll}
+    >
+      Удалить всё
+    </button>
     <Counters taskList={taskList}/>
     </>
   )
