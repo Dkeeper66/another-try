@@ -74,6 +74,8 @@ export default function App(){
 
     return(
     <div className='taskshow' key={id}>
+      
+      <div>
       <li id={styleID}>{name}, {id}, {status.toString()}</li>
       <div>
         {showEdit !== id && (
@@ -96,6 +98,8 @@ export default function App(){
               сохранить
             </button>
           </form>)}
+          </div>
+          
       </div>
       <input 
       type='checkbox'
