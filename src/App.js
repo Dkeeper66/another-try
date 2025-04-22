@@ -55,6 +55,12 @@ export default function App(){
       setShowEdit(null)
     }
   }
+
+  const handleDelete = ({id})=>{
+    const newList = taskList.filter(task => task.id !== id)
+    setTaskList(newList)
+
+  }
   
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
@@ -89,6 +95,12 @@ export default function App(){
       type='checkbox'
       checked={status}
       onChange={() => toggleStatus(id)}></input>
+      <button
+      type='button'
+      onClick={() => handleDelete({id})}
+      >
+        Удалить
+      </button>
     </div>)}
 )
   return(
