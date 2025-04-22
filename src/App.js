@@ -63,7 +63,9 @@ export default function App(){
 
   }
 
-
+  const handleCompleteAll = () => {
+    setTaskList(taskList.map(task => ({...task, status:true})))
+  }
   
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
@@ -124,7 +126,7 @@ export default function App(){
     </form>
     <button
     type='button'
-    onClick={() => alert('bb')}
+    onClick={() => handleCompleteAll({taskList})}
     >
       Выполнить всё
     </button>
