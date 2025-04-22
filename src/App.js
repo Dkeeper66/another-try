@@ -22,6 +22,7 @@ export default function App(){
   const [editedTask, setEditedTask] = useState(null)
   const [showEdit, setShowEdit] = useState(null)
   const [showDelete, setShowDelete] = useState(false)
+  const [showOnlyComplete, setShowOnlyComplete] = useState(false)
   const handleSubmit = (e)=>{
     e.preventDefault()
     const objTask ={
@@ -60,7 +61,7 @@ export default function App(){
   const handleDelete = ({id})=>{
     const newList = taskList.filter(task => task.id !== id)
     setTaskList(newList)
-
+    setEditedTask(null)
   }
 
   const handleCompleteAll = () => {
@@ -130,6 +131,12 @@ export default function App(){
     >
       Выполнить всё
     </button>
+    <button
+    type='button'
+    onClick={() => setShowOnlyComplete(!showOnlyComplete)}
+    >
+      Показать выполненные
+    </button>
     <ul>{listItems}</ul>
     <button
     type='button'
@@ -143,6 +150,7 @@ export default function App(){
         <p>Удалить всё?</p>
         <button type='button' onClick={()=> {setTaskList([])
           setShowDelete(false)
+          setEditedTask(null)
         }}>Да</button>
         <button type='button' onClick={() => setShowDelete(false)}>Нет</button>
       </div>
