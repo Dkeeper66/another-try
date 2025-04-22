@@ -21,7 +21,7 @@ export default function App(){
   const [taskList, setTaskList] = useState([])
   const [editedTask, setEditedTask] = useState(null)
   const [showEdit, setShowEdit] = useState(null)
-  
+  const [showDelete, setShowDelete] = useState(false)
   const handleSubmit = (e)=>{
     e.preventDefault()
     const objTask ={
@@ -64,8 +64,9 @@ export default function App(){
   }
 
   const handleDeleteAll = ()=>{
-    setTaskList([])
-  }
+    setShowDelete(true)
+    }
+  
   
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
@@ -131,6 +132,17 @@ export default function App(){
     >
       Удалить всё
     </button>
+    
+    {showDelete && (
+      <div>
+        <p>Удалить всё?</p>
+        <button type='button' onClick={()=> {setTaskList([])
+          setShowDelete(false)
+        }}>Да</button>
+        <button type='button' onClick={() => setShowDelete(false)}>Нет</button>
+      </div>
+    )}
+      
     <Counters taskList={taskList}/>
     </>
   )
