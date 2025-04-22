@@ -2,16 +2,6 @@ import './App.css'
 import React, { useState } from 'react'
 
 
-const Profile = ()=>{
-  return(
-    <>
-    <img
-    src='https://i.imgur.com/MK3eW3As.jpg'
-    alt='nu hz kto'
-    />
-    </>
-  )
-}
 
 const Counters = ({taskList})=>{
   const doneCount = taskList.filter(task => task.status === true).length
@@ -29,6 +19,8 @@ const Counters = ({taskList})=>{
 export default function App(){
   const [task, setTask] = useState('')
   const [taskList, setTaskList] = useState([])
+  const [editedTask, setEditedTask] = useState(null)
+  const [showEdit, setShowEdit] = useState(null)
   const handleSubmit = (e)=>{
     e.preventDefault()
     const objTask ={
@@ -46,41 +38,73 @@ export default function App(){
       )
   }
 
-  const handleRedacted = (e) => {
+  const handleEdit = (taskObj) =>{
+    setEditedTask(taskObj.id)
+    setTask(taskObj.name)
+    setShowEdit(taskObj.id)
+  }
+
+  const handleSave = (e) =>{
     e.preventDefault()
-    alert('Плейсхолдер')
+    if (editedTask){
+      setTaskList(
+        taskList.map((t)=> t.id === editedTask ? {...t, name: task}:t)
+      )
+      setEditedTask(null)
+      setTask('')
+      setShowEdit(null)
+    }
   }
   
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
     if (status === true){styleID='trueTask'}
+
     return(
-    <form className='taskshow' key={id}>
+    <div className='taskshow' key={id}>
       <li id={styleID}>{name}, {id}, {status.toString()}</li>
-      <button
-      onClick={handleRedacted}
-      >Редактировать</button>
+      <div>
+        {showEdit !== id && (
+          <button type='button' onClick={() => handleEdit({name, id})}>
+            Редактировать
+            </button>
+          )}
+      </div>
+      <div>
+        {showEdit === id && (
+          <form onSubmit={handleSave}>
+            <input 
+            type='text' 
+            placeholder={name} 
+            value={task} 
+            onChange={(e)=>setTask(e.target.value)}>
+            </input>
+            <button
+            type='submit'>
+              сохранить
+            </button>
+          </form>)}
+      </div>
       <input 
       type='checkbox'
-      value={status}
+      checked={status}
       onChange={() => toggleStatus(id)}></input>
-    </form>)}
+    </div>)}
 )
   return(
     <>
-    <div>look at them</div>
-    <Profile />
-    <Profile />
-    <Profile />
+    <h1>ToDo</h1>
     <form onSubmit={handleSubmit}>
     <input 
     value={task}
     type='text'
     required
     onChange={(e)=>setTask(e.target.value)}
+    disabled={editedTask !== null}
     />
     <button
     type='sumbit'
+    disabled={editedTask !== null}
     >Sumbit</button>
     </form>
     <ul>{listItems}</ul>
