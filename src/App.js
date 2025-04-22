@@ -63,10 +63,7 @@ export default function App(){
 
   }
 
-  const handleDeleteAll = ()=>{
-    setShowDelete(true)
-    }
-  
+
   
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
@@ -125,10 +122,16 @@ export default function App(){
     disabled={editedTask !== null}
     >Sumbit</button>
     </form>
+    <button
+    type='button'
+    onClick={() => alert('bb')}
+    >
+      Выполнить всё
+    </button>
     <ul>{listItems}</ul>
     <button
     type='button'
-    onClick={handleDeleteAll}
+    onClick={()=> setShowDelete(true)}
     >
       Удалить всё
     </button>
