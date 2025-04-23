@@ -70,11 +70,12 @@ export default function App(){
   
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
+    let hiddenStatus = false
+    if (showOnlyComplete && !status === true) {hiddenStatus = true}
     if (status === true){styleID='trueTask'}
-
     return(
     <div className='taskshow' key={id}>
-      
+      <div className='singleTask' hidden={hiddenStatus}>
       <div>
       <li id={styleID}>{name}, {id}, {status.toString()}</li>
       <div>
@@ -111,8 +112,9 @@ export default function App(){
       >
         Удалить
       </button>
-    </div>)}
-)
+    </div>
+    </div>)})
+
   return(
     <>
     <h1>ToDo</h1>
@@ -137,7 +139,9 @@ export default function App(){
     </button>
     <button
     type='button'
-    onClick={() => setShowOnlyComplete(!showOnlyComplete)}
+    className='buttons'
+    id='showCompleteButton'
+    onClick={() => {setShowOnlyComplete(!showOnlyComplete) }}
     >
       Показать выполненные
     </button>

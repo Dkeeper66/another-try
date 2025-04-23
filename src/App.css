@@ -33,3 +33,11 @@ display: flex;
 #falseTask{
     color: red;
 }
+
+button {
+    background-color: bisque;
+    border: 2px solid rgb(233, 170, 34);
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
