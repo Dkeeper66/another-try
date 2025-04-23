@@ -23,6 +23,7 @@ export default function App(){
   const [showEdit, setShowEdit] = useState(null)
   const [showDelete, setShowDelete] = useState(false)
   const [showOnlyComplete, setShowOnlyComplete] = useState(false)
+  const [filterButton, setFilterButton] = useState(true)
   const handleSubmit = (e)=>{
     e.preventDefault()
     const objTask ={
@@ -66,6 +67,11 @@ export default function App(){
 
   const handleCompleteAll = () => {
     setTaskList(taskList.map(task => ({...task, status:true})))
+  }
+
+  const handleFilter = () =>{
+    setShowOnlyComplete(!showOnlyComplete)
+    setFilterButton(!filterButton)
   }
   
   const listItems = taskList.map(({ name, id, status })=>{
@@ -140,8 +146,8 @@ export default function App(){
     <button
     type='button'
     className='buttons'
-    id='showCompleteButton'
-    onClick={() => {setShowOnlyComplete(!showOnlyComplete) }}
+    id={filterButton.toString()}
+    onClick={() => handleFilter()}
     >
       Показать выполненные
     </button>
