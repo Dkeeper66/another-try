@@ -9,9 +9,11 @@ const Counters = ({taskList})=>{
   const sumCount = taskList.length
   return(
     <>
-    <div>Всего задач {sumCount}</div>
-    <div>Выполнено {doneCount}</div>
-    <div>Не выполнено {undoneCount}</div>
+    <div className='counters'>
+    <div className='singleCounter'>Всего задач {sumCount}</div>
+    <div className='singleCounter'>Выполнено {doneCount}</div>
+    <div className='singleCounter'>Не выполнено {undoneCount}</div>
+    </div>
     </>
   )
 }
@@ -77,7 +79,7 @@ export default function App(){
   const listItems = taskList.map(({ name, id, status })=>{
     let styleID = 'falseTask'
     let hiddenStatus = false
-    if (showOnlyComplete && !status === true) {hiddenStatus = true}
+    if (showOnlyComplete && !status) {hiddenStatus = true}
     if (status === true){styleID='trueTask'}
     return(
     <div className='taskshow' key={id}>
@@ -108,7 +110,7 @@ export default function App(){
           </div>
           
       </div>
-      <input 
+      <input className='checkbox'
       type='checkbox'
       checked={status}
       onChange={() => toggleStatus(id)}></input>
@@ -123,7 +125,7 @@ export default function App(){
 
   return(
     <>
-    <h1>ToDo</h1>
+    <h1>Трекер задач</h1>
     <form onSubmit={handleSubmit}>
     <input 
     value={task}
@@ -133,7 +135,7 @@ export default function App(){
     disabled={editedTask !== null}
     />
     <button
-    type='sumbit'
+    type='submit'
     disabled={editedTask !== null}
     >Sumbit</button>
     </form>

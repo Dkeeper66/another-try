@@ -1,4 +1,7 @@
 
+
+
+/*Стили тасков*/
 .taskshow{
     display: flex;
     flex-direction: row;
@@ -10,6 +13,18 @@
 #falseTask{
     color: red;
 }
+.singleTask{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 247, 216);
+    border: 3px solid rgb(253, 224, 144);
+    min-width: 100%;
+    max-width: 100%;
+}
+.singleTask[hidden]{
+    display: none !important;
+}
+
 
 /* Стили кнопок*/
     button {
@@ -19,9 +34,10 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         cursor: pointer;
         border-radius: 6px;
+        transition: background-color 0.1s ease-in-out;
     }
     button:hover {
-        background-color: rgb(245, 212, 172);
+        background-color: #f8d983;
     }
     button:active{
         background-color: rgb(243, 175, 93);
@@ -36,4 +52,26 @@
         background-color: rgb(167, 255, 167);
         border: 2px solid rgb(118, 255, 118);
     }
+    .checkbox:hover{
+        cursor: pointer;
+    }
 
+input[type="text"] {
+    padding: 10px;
+    width: 70%;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    margin-right: 10px;
+    }
+
+.counters{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid rgb(255, 211, 145);
+    border-radius: 6px;
+}
+.singleCounter{
+    padding: 5px;
+    flex-grow: 1;
+}
