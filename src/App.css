@@ -1,11 +1,33 @@
+.ToDo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+}
 
-
+.inputArea{
+    display: flex;
+    justify-content: center;
+}
+.extraButtons{
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 15px;
+}
 
 /*Стили тасков*/
-.taskshow{
-    display: flex;
-    flex-direction: row;
+ul{
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin: 10px auto;
+    list-style: none;
+    width: 90%;
 }
+
 #trueTask{
     text-decoration: line-through;
     color: green;
@@ -16,13 +38,19 @@
 .singleTask{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     background-color: rgb(255, 247, 216);
     border: 3px solid rgb(253, 224, 144);
-    min-width: 100%;
-    max-width: 100%;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 5px;
 }
 .singleTask[hidden]{
     display: none !important;
+}
+li{
+    margin-right: 50%;
 }
 
 
@@ -55,6 +83,12 @@
     .checkbox:hover{
         cursor: pointer;
     }
+    button[type='submit']{
+        width: 15%;
+    }
+    .checkbox{
+        
+    }
 
 input[type="text"] {
     padding: 10px;
@@ -62,7 +96,6 @@ input[type="text"] {
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 6px;
-    margin-right: 10px;
     }
 
 .counters{

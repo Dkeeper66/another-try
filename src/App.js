@@ -85,7 +85,7 @@ export default function App(){
     <div className='taskshow' key={id}>
       <div className='singleTask' hidden={hiddenStatus}>
       <div>
-      <li id={styleID}>{name}, {id}, {status.toString()}</li>
+      <li id={styleID}>{name}, {status ? 'Выполнено' : 'Не выполнено'}</li>
       <div>
         {showEdit !== id && (
           <button type='button' onClick={() => handleEdit({name, id})}>
@@ -125,8 +125,10 @@ export default function App(){
 
   return(
     <>
+    <div className='ToDo'>
     <h1>Трекер задач</h1>
-    <form onSubmit={handleSubmit}>
+    <div className='topZone'>
+    <form className='inputArea' onSubmit={handleSubmit}>
     <input 
     value={task}
     type='text'
@@ -139,6 +141,7 @@ export default function App(){
     disabled={editedTask !== null}
     >Sumbit</button>
     </form>
+    <div className='extraButtons'>
     <button
     type='button'
     onClick={() => handleCompleteAll({taskList})}
@@ -153,6 +156,8 @@ export default function App(){
     >
       Показать выполненные
     </button>
+    </div>
+    </div>
     <ul>{listItems}</ul>
     <button
     type='button'
@@ -173,6 +178,7 @@ export default function App(){
     )}
       
     <Counters taskList={taskList}/>
+    </div>
     </>
   )
 }
