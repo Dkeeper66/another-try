@@ -10,9 +10,9 @@ const Counters = ({taskList})=>{
   return(
     <>
     <div className='counters'>
-    <div className='singleCounter'>ToDos {sumCount}</div>
-    <div className='singleCounter'>Completed {doneCount}</div>
-    <div className='singleCounter'>Not completed {undoneCount}</div>
+    <div className='singleCounter'>ToDos: {sumCount}</div>
+    <div className='singleCounter'>Completed: {doneCount}</div>
+    <div className='singleCounter'>Not completed: {undoneCount}</div>
     </div>
     </>
   )
@@ -109,6 +109,7 @@ export default function App(){
             <input 
             id='save'
             type='text' 
+            autoComplete='off'
             placeholder={name} 
             value={task} 
             onChange={(e)=>setTask(e.target.value)}>
@@ -140,6 +141,7 @@ export default function App(){
     value={task}
     type='text'
     required
+    autoComplete='off'
     onChange={(e)=>setTask(e.target.value)}
     disabled={editedTask !== null}
     id='input'
@@ -167,21 +169,23 @@ export default function App(){
     </div>
     </div>
     <ul>{listItems}</ul>
-    <button
+   {!showDelete &&( <button
     type='button'
     onClick={()=> setShowDelete(true)}
     >
       Delete all
-    </button>
+    </button>)}
     
     {showDelete && (
-      <div>
+      <div className='choose'>
         <p>Are you sure?</p>
-        <button type='button' onClick={()=> {setTaskList([])
+        <div className='chooseButtons'>
+        <button type='button' id='choose' onClick={()=> {setTaskList([])
           setShowDelete(false)
           setEditedTask(null)
         }}>Yes</button>
-        <button type='button' onClick={() => setShowDelete(false)}>No</button>
+        <button type='button' id='choose' style={{color: 'green'}} onClick={() => setShowDelete(false)}>No</button>
+      </div>
       </div>
     )}
       
