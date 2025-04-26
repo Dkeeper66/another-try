@@ -37,20 +37,42 @@ ul{
 }
 .singleTask{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     background-color: rgb(255, 247, 216);
     border: 3px solid rgb(253, 224, 144);
+    border-radius: 4px;
     width: 100%;
-    justify-content: space-between;
-    padding: 10px;
-    margin: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    gap: 10px;
 }
 .singleTask[hidden]{
     display: none !important;
 }
 li{
-    margin-right: 50%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+.taskName{
+    word-break: break-word;
+    flex-grow: 1;
+    margin-right: 15px;
+    font-size: 16px;
+    white-space: normal;
+    max-width: 400px;
+}
+.taskStatus{
+    white-space: nowrap;
+    margin-right: 15px;
+    align-self: center;
+    font-weight: bold;
+    margin-left: auto;
+    padding-left: 15px;
 }
 
 
@@ -87,16 +109,45 @@ li{
         width: 15%;
     }
     .checkbox{
-        
+        width: 25px;
+        margin: 0 10px;
+        transform: scale(1.2);
+        align-self: center;
+    }
+    button#deleteSingleButton{
+        width: auto;
+        height: 40px;
+        color: rgb(107, 0, 0);
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    button#saveButton{
+        width: 80px;
+        padding: 5px 10px;
+        align-self: center;
+        margin: 0 5px;
     }
 
-input[type="text"] {
+input#input{
     padding: 10px;
     width: 70%;
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 6px;
     }
+input#save{
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 5px;
+    margin-right: 5px;
+}
+form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 
 .counters{
     display: flex;

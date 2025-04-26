@@ -10,9 +10,9 @@ const Counters = ({taskList})=>{
   return(
     <>
     <div className='counters'>
-    <div className='singleCounter'>Всего задач {sumCount}</div>
-    <div className='singleCounter'>Выполнено {doneCount}</div>
-    <div className='singleCounter'>Не выполнено {undoneCount}</div>
+    <div className='singleCounter'>ToDos {sumCount}</div>
+    <div className='singleCounter'>Completed {doneCount}</div>
+    <div className='singleCounter'>Not completed {undoneCount}</div>
     </div>
     </>
   )
@@ -85,11 +85,21 @@ export default function App(){
     <div className='taskshow' key={id}>
       <div className='singleTask' hidden={hiddenStatus}>
       <div>
-      <li id={styleID}>{name}, {status ? 'Выполнено' : 'Не выполнено'}</li>
-      <div>
+      <li id={styleID}>
+        <span className='taskName'>{name}</span> 
+        <span className='taskStatus'>{status ? 'Completed' : 'Not completed'}</span>
+        </li>
+     
+          
+      </div>
+      <input className='checkbox'
+      type='checkbox'
+      checked={status}
+      onChange={() => toggleStatus(id)}></input>
+       <div>
         {showEdit !== id && (
           <button type='button' onClick={() => handleEdit({name, id})}>
-            Редактировать
+            Edit
             </button>
           )}
       </div>
@@ -97,28 +107,25 @@ export default function App(){
         {showEdit === id && (
           <form onSubmit={handleSave}>
             <input 
+            id='save'
             type='text' 
             placeholder={name} 
             value={task} 
             onChange={(e)=>setTask(e.target.value)}>
             </input>
             <button
+            id='saveButton'
             type='submit'>
-              сохранить
+              Save
             </button>
           </form>)}
           </div>
-          
-      </div>
-      <input className='checkbox'
-      type='checkbox'
-      checked={status}
-      onChange={() => toggleStatus(id)}></input>
       <button
       type='button'
       onClick={() => handleDelete({id})}
+      id='deleteSingleButton'
       >
-        Удалить
+        Delete
       </button>
     </div>
     </div>)})
@@ -126,7 +133,7 @@ export default function App(){
   return(
     <>
     <div className='ToDo'>
-    <h1>Трекер задач</h1>
+    <h1>ToDo tracker</h1>
     <div className='topZone'>
     <form className='inputArea' onSubmit={handleSubmit}>
     <input 
@@ -135,6 +142,7 @@ export default function App(){
     required
     onChange={(e)=>setTask(e.target.value)}
     disabled={editedTask !== null}
+    id='input'
     />
     <button
     type='submit'
@@ -146,7 +154,7 @@ export default function App(){
     type='button'
     onClick={() => handleCompleteAll({taskList})}
     >
-      Выполнить всё
+      Complete all
     </button>
     <button
     type='button'
@@ -154,7 +162,7 @@ export default function App(){
     id={filterButton.toString()}
     onClick={() => handleFilter()}
     >
-      Показать выполненные
+      Show only completed
     </button>
     </div>
     </div>
@@ -163,17 +171,17 @@ export default function App(){
     type='button'
     onClick={()=> setShowDelete(true)}
     >
-      Удалить всё
+      Delete all
     </button>
     
     {showDelete && (
       <div>
-        <p>Удалить всё?</p>
+        <p>Are you sure?</p>
         <button type='button' onClick={()=> {setTaskList([])
           setShowDelete(false)
           setEditedTask(null)
-        }}>Да</button>
-        <button type='button' onClick={() => setShowDelete(false)}>Нет</button>
+        }}>Yes</button>
+        <button type='button' onClick={() => setShowDelete(false)}>No</button>
       </div>
     )}
       
