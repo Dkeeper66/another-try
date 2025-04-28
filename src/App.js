@@ -1,15 +1,16 @@
 import "./App.css";
 import React, { useState } from "react";
 import Counters from "./Counter";
+import ListItems from "./ListItems";
 
 export default function App() {
 	const [task, setTask] = useState("");
 	const [taskList, setTaskList] = useState([]);
 	const [editedTask, setEditedTask] = useState(null);
-	const [showEdit, setShowEdit] = useState(null);
 	const [showDelete, setShowDelete] = useState(false);
 	const [showOnlyComplete, setShowOnlyComplete] = useState(false);
 	const [filterButton, setFilterButton] = useState(true);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const objTask = {
@@ -19,37 +20,6 @@ export default function App() {
 		};
 		setTaskList((prev) => [...prev, objTask]);
 		setTask("");
-	};
-	const toggleStatus = (id) => {
-		const newTaskList = taskList.map((task) =>
-			task.id === id ? { ...task, status: !task.status } : task
-		);
-		setTaskList(newTaskList);
-	};
-
-	const handleEdit = (taskObj) => {
-		setEditedTask(taskObj.id);
-		setTask(taskObj.name);
-		setShowEdit(taskObj.id);
-	};
-
-	const handleSave = (e) => {
-		e.preventDefault();
-		if (editedTask) {
-			const newTaskList = taskList.map((t) =>
-				t.id === editedTask ? { ...t, name: task } : t
-			);
-			setTaskList(newTaskList);
-			setEditedTask(null);
-			setTask("");
-			setShowEdit(null);
-		}
-	};
-
-	const handleDelete = ({ id }) => {
-		const newList = taskList.filter((task) => task.id !== id);
-		setTaskList(newList);
-		setEditedTask(null);
 	};
 
 	const handleCompleteAll = () => {
@@ -61,68 +31,6 @@ export default function App() {
 		setShowOnlyComplete((prev) => !prev);
 		setFilterButton((prev) => !prev);
 	};
-
-	const listItems = taskList.map(({ name, id, status }) => {
-		let styleID = "falseTask";
-		let hiddenStatus = false;
-		if (showOnlyComplete && !status) {
-			hiddenStatus = true;
-		}
-		if (status === true) {
-			styleID = "trueTask";
-		}
-		return (
-			<div className="taskshow" key={id}>
-				<div className="singleTask" hidden={hiddenStatus}>
-					<div>
-						<li id={styleID}>
-							<span className="taskName">{name}</span>
-							<span className="taskStatus">
-								{status ? "Completed" : "Not completed"}
-							</span>
-						</li>
-					</div>
-					<input
-						className="checkbox"
-						type="checkbox"
-						checked={status}
-						onChange={() => toggleStatus(id)}
-					></input>
-					<div>
-						{showEdit !== id && (
-							<button type="button" onClick={() => handleEdit({ name, id })}>
-								Edit
-							</button>
-						)}
-					</div>
-					<div>
-						{showEdit === id && (
-							<form onSubmit={handleSave}>
-								<input
-									id="save"
-									type="text"
-									autoComplete="off"
-									placeholder={name}
-									value={task}
-									onChange={(e) => setTask(e.target.value)}
-								></input>
-								<button id="saveButton" type="submit">
-									Save
-								</button>
-							</form>
-						)}
-					</div>
-					<button
-						type="button"
-						onClick={() => handleDelete({ id })}
-						id="deleteSingleButton"
-					>
-						Delete
-					</button>
-				</div>
-			</div>
-		);
-	});
 
 	return (
 		<>
@@ -144,10 +52,7 @@ export default function App() {
 						</button>
 					</form>
 					<div className="extraButtons">
-						<button
-							type="button"
-							onClick={() => handleCompleteAll({ taskList })}
-						>
+						<button type="button" onClick={handleCompleteAll}>
 							Complete all
 						</button>
 						<button
@@ -160,7 +65,13 @@ export default function App() {
 						</button>
 					</div>
 				</div>
-				<ul>{listItems}</ul>
+				<ListItems
+					taskList={taskList}
+					setTaskList={setTaskList}
+					editedTask={editedTask}
+					setEditedTask={setEditedTask}
+					showOnlyComplete={showOnlyComplete}
+				/>
 				{!showDelete && (
 					<button type="button" onClick={() => setShowDelete(true)}>
 						Delete all
