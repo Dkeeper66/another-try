@@ -1,20 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-
-const Counters = ({ taskList }) => {
-	const doneCount = taskList.filter((task) => task.status === true).length;
-	const undoneCount = taskList.filter((task) => task.status !== true).length;
-	const sumCount = taskList.length;
-	return (
-		<>
-			<div className="counters">
-				<div className="singleCounter">ToDos: {sumCount}</div>
-				<div className="singleCounter">Completed: {doneCount}</div>
-				<div className="singleCounter">Not completed: {undoneCount}</div>
-			</div>
-		</>
-	);
-};
+import Counters from "./Counter";
 
 export default function App() {
 	const [task, setTask] = useState("");
@@ -31,15 +17,14 @@ export default function App() {
 			status: false,
 			id: Date.now(),
 		};
-		setTaskList([...taskList, objTask]);
+		setTaskList((prev) => [...prev, objTask]);
 		setTask("");
 	};
 	const toggleStatus = (id) => {
-		setTaskList(
-			taskList.map((task) =>
-				task.id === id ? { ...task, status: !task.status } : task
-			)
+		const newTaskList = taskList.map((task) =>
+			task.id === id ? { ...task, status: !task.status } : task
 		);
+		setTaskList(newTaskList);
 	};
 
 	const handleEdit = (taskObj) => {
@@ -51,9 +36,10 @@ export default function App() {
 	const handleSave = (e) => {
 		e.preventDefault();
 		if (editedTask) {
-			setTaskList(
-				taskList.map((t) => (t.id === editedTask ? { ...t, name: task } : t))
+			const newTaskList = taskList.map((t) =>
+				t.id === editedTask ? { ...t, name: task } : t
 			);
+			setTaskList(newTaskList);
 			setEditedTask(null);
 			setTask("");
 			setShowEdit(null);
@@ -67,12 +53,13 @@ export default function App() {
 	};
 
 	const handleCompleteAll = () => {
-		setTaskList(taskList.map((task) => ({ ...task, status: true })));
+		const newTaskList = taskList.map((task) => ({ ...task, status: true }));
+		setTaskList(newTaskList);
 	};
 
 	const handleFilter = () => {
-		setShowOnlyComplete(!showOnlyComplete);
-		setFilterButton(!filterButton);
+		setShowOnlyComplete((prev) => !prev);
+		setFilterButton((prev) => !prev);
 	};
 
 	const listItems = taskList.map(({ name, id, status }) => {
