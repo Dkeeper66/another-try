@@ -9,9 +9,7 @@ import DeleteAll from "./components/DeleteAll";
 export default function App() {
 	const [taskList, setTaskList] = useState([]);
 	const [editedTask, setEditedTask] = useState(null);
-
 	const [showOnlyComplete, setShowOnlyComplete] = useState(false);
-
 	return (
 		<>
 			<div className="ToDo">
