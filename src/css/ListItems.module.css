@@ -1,4 +1,12 @@
 /*Стили тасков*/
+.taskArea {
+	background-color: rgb(255, 247, 234);
+	min-height: 80px;
+	border: 5px solid rgb(255, 238, 211);
+	border-radius: 10px;
+	margin: 20px;
+}
+
 ul {
 	padding: 5px;
 	margin-top: 10px;

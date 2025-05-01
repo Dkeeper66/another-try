@@ -104,7 +104,9 @@ export default function ListItems({
 
 	return (
 		<>
-			<ul>{listItems}</ul>
+			<div className={styles.taskArea}>
+				<ul>{listItems}</ul>
+			</div>
 		</>
 	);
 }
