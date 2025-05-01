@@ -1,4 +1,4 @@
-import "./App.css";
+import "./css/App.css";
 import React, { useState } from "react";
 import Counters from "./Counter";
 import ListItems from "./ListItems";
@@ -15,7 +15,7 @@ export default function App() {
 		<>
 			<div className="ToDo">
 				<h1>ToDo tracker</h1>
-				<div className="topZone">
+				<div>
 					<Input setTaskList={setTaskList} editedTask={editedTask} />
 					<ControlButtons
 						setShowOnlyComplete={setShowOnlyComplete}

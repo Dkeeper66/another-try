@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./css/Input.module.css";
 
 export default function Input({ setTaskList, editedTask }) {
 	const [task, setTask] = useState("");
@@ -14,7 +15,7 @@ export default function Input({ setTaskList, editedTask }) {
 	};
 	return (
 		<>
-			<form className="inputArea" onSubmit={handleSubmit}>
+			<form className={styles.inputArea} onSubmit={handleSubmit}>
 				<input
 					value={task}
 					type="text"

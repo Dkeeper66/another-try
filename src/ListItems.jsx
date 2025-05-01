@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./css/ListItems.module.css";
 
 export default function ListItems({
 	taskList,
@@ -41,28 +42,26 @@ export default function ListItems({
 		setTaskList(newList);
 		setEditedTask(null);
 	};
+
 	const listItems = taskList.map(({ name, id, status }) => {
-		let styleID = "falseTask";
 		let hiddenStatus = false;
 		if (showOnlyComplete && !status) {
 			hiddenStatus = true;
 		}
-		if (status === true) {
-			styleID = "trueTask";
-		}
+
 		return (
-			<div className="taskshow" key={id}>
-				<div className="singleTask" hidden={hiddenStatus}>
+			<div className={styles.taskshow} key={id}>
+				<div className={styles.singleTask} hidden={hiddenStatus}>
 					<div>
-						<li id={styleID}>
-							<span className="taskName">{name}</span>
-							<span className="taskStatus">
+						<li className={`${status ? styles.trueTask : styles.falseTask}`}>
+							<span className={styles.taskName}>{name}</span>
+							<span className={styles.taskStatus}>
 								{status ? "Completed" : "Not completed"}
 							</span>
 						</li>
 					</div>
 					<input
-						className="checkbox"
+						className={styles.checkbox}
 						type="checkbox"
 						checked={status}
 						onChange={() => toggleStatus(id)}
@@ -78,14 +77,14 @@ export default function ListItems({
 						{showEdit === id && (
 							<form onSubmit={handleSave}>
 								<input
-									id="save"
+									className={styles.inputSave}
 									type="text"
 									autoComplete="off"
 									placeholder={name}
 									value={task}
 									onChange={(e) => setTask(e.target.value)}
 								></input>
-								<button id="saveButton" type="submit">
+								<button className={styles.saveButton} type="submit">
 									Save
 								</button>
 							</form>
@@ -94,7 +93,7 @@ export default function ListItems({
 					<button
 						type="button"
 						onClick={() => handleDelete({ id })}
-						id="deleteSingleButton"
+						className={styles.deleteSingleButton}
 					>
 						Delete
 					</button>
@@ -102,6 +101,7 @@ export default function ListItems({
 			</div>
 		);
 	});
+
 	return (
 		<>
 			<ul>{listItems}</ul>

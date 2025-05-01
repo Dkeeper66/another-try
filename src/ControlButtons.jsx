@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./css/ControlButtons.module.css";
 
 export default function ControlButtons({
 	taskList,
@@ -17,14 +18,15 @@ export default function ControlButtons({
 	};
 	return (
 		<>
-			<div className="extraButtons">
+			<div className={styles.extraButtons}>
 				<button type="button" onClick={handleCompleteAll}>
 					Complete all
 				</button>
 				<button
 					type="button"
-					className="buttons"
-					id={filterButton.toString()}
+					className={`${styles.button} ${
+						!filterButton ? styles.buttonActive : ""
+					}`}
 					onClick={() => handleFilter()}
 				>
 					Show only completed

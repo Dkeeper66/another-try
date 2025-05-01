@@ -1,0 +1,15 @@
+.extraButtons {
+	display: flex;
+	justify-content: space-between;
+	width: 85%;
+	padding-left: 8%;
+	padding-right: 8%;
+	padding-top: 15px;
+}
+.buttonActive {
+	background-color: rgb(167, 255, 167);
+	border: 2px solid rgb(118, 255, 118);
+}
+.buttonActive:hover {
+	background-color: rgb(124, 252, 124);
+}
