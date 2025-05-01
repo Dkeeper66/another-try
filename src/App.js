@@ -4,11 +4,12 @@ import Counters from "./Counter";
 import ListItems from "./ListItems";
 import Input from "./Input";
 import ControlButtons from "./ControlButtons";
+import DeleteAll from "./DeleteAll";
 
 export default function App() {
 	const [taskList, setTaskList] = useState([]);
 	const [editedTask, setEditedTask] = useState(null);
-	const [showDelete, setShowDelete] = useState(false);
+
 	const [showOnlyComplete, setShowOnlyComplete] = useState(false);
 
 	return (
@@ -30,39 +31,9 @@ export default function App() {
 					setEditedTask={setEditedTask}
 					showOnlyComplete={showOnlyComplete}
 				/>
-				{!showDelete && (
-					<button type="button" onClick={() => setShowDelete(true)}>
-						Delete all
-					</button>
-				)}
-
-				{showDelete && (
-					<div className="choose">
-						<p>Are you sure?</p>
-						<div className="chooseButtons">
-							<button
-								type="button"
-								id="choose"
-								onClick={() => {
-									setTaskList([]);
-									setShowDelete(false);
-									setEditedTask(null);
-								}}
-							>
-								Yes
-							</button>
-							<button
-								type="button"
-								id="choose"
-								style={{ color: "green" }}
-								onClick={() => setShowDelete(false)}
-							>
-								No
-							</button>
-						</div>
-					</div>
-				)}
-
+				<div>
+					<DeleteAll setTaskList={setTaskList} setEditedTask={setEditedTask} />
+				</div>
 				<Counters taskList={taskList} />
 			</div>
 		</>

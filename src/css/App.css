@@ -34,14 +34,6 @@ button[type="submit"] {
 	width: 15%;
 }
 
-button#choose {
-	width: 100px;
-	margin-bottom: 10px;
-	font-size: 16px;
-	color: rgb(160, 0, 0);
-	font-weight: 600;
-}
-
 input#input {
 	padding: 10px;
 	width: 70%;
@@ -56,16 +48,6 @@ form {
 	flex-wrap: wrap;
 }
 
-.choose {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	background-color: #fff3e1;
-	width: 50%;
-	align-self: center;
-	border: 2px solid rgb(250, 225, 140);
-	border-radius: 10px;
-}
 p {
 	background-color: #ffe6c1;
 	width: 200px;
@@ -75,10 +57,4 @@ p {
 	font-weight: 600;
 	text-align: center;
 	line-height: 35px;
-}
-.chooseButtons {
-	display: flex;
-	gap: 20px;
-	width: 200px;
-	justify-content: center;
 }
