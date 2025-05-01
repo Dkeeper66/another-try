@@ -3,6 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: space-between;
+	width: 900px;
 }
 
 /* Стили кнопок*/
@@ -30,10 +31,6 @@ button:disabled {
 	cursor: not-allowed;
 }
 
-button[type="submit"] {
-	width: 15%;
-}
-
 input#input {
 	padding: 10px;
 	width: 70%;
@@ -45,6 +42,7 @@ input#input {
 form {
 	display: flex;
 	align-items: center;
+	gap: 5px;
 	flex-wrap: wrap;
 }
 
