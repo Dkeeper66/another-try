@@ -1,0 +1,205 @@
+.ToDo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: space-between;
+}
+
+.inputArea {
+	display: flex;
+	justify-content: center;
+}
+.extraButtons {
+	display: flex;
+	justify-content: space-between;
+	width: 85%;
+	padding-left: 8%;
+	padding-right: 8%;
+	padding-top: 15px;
+}
+
+/*Стили тасков*/
+ul {
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin: 10px auto;
+	list-style: none;
+	width: 90%;
+}
+.taskshow {
+	width: 100%;
+}
+
+#trueTask {
+	text-decoration: line-through;
+	color: green;
+	width: 35vw;
+}
+#falseTask {
+	color: red;
+	width: 35vw;
+}
+.singleTask {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	background-color: rgb(255, 247, 216);
+	border: 3px solid rgb(253, 224, 144);
+	border-radius: 4px;
+	width: 100%;
+	padding: 10px 15px;
+	margin-bottom: 10px;
+	gap: 10px;
+	overflow: scroll;
+}
+.singleTask[hidden] {
+	display: none !important;
+}
+li {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-grow: 1;
+	margin-right: 15px;
+}
+.taskName {
+	word-break: break-word;
+	flex-grow: 1;
+	margin-right: 15px;
+	font-size: 16px;
+	white-space: normal;
+	max-width: 400px;
+}
+.taskStatus {
+	white-space: nowrap;
+	margin-right: 15px;
+	align-self: center;
+	font-weight: bold;
+	margin-left: auto;
+	padding-left: 15px;
+}
+
+/* Стили кнопок*/
+button {
+	background-color: bisque;
+	border: 2px solid rgb(233, 170, 34);
+	text-align: center;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	border-radius: 6px;
+	transition: background-color 0.1s ease-in-out;
+	height: 40px;
+	font-weight: 500;
+}
+button:hover {
+	background-color: #f8d983;
+}
+button:active {
+	background-color: rgb(243, 175, 93);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	transform: translateY(1px);
+}
+button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+button#false {
+	background-color: rgb(167, 255, 167);
+	border: 2px solid rgb(118, 255, 118);
+}
+.checkbox:hover {
+	cursor: pointer;
+}
+button[type="submit"] {
+	width: 15%;
+}
+.checkbox {
+	width: 25px;
+	margin: 0 10px;
+	transform: scale(1.2);
+	align-self: center;
+}
+button#deleteSingleButton {
+	width: auto;
+	height: 40px;
+	color: rgb(133, 0, 0);
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 10px;
+	font-weight: bold;
+}
+button#saveButton {
+	width: 80px;
+	padding: 5px 10px;
+	align-self: center;
+	margin: 0 5px;
+}
+button#choose {
+	width: 100px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	color: rgb(160, 0, 0);
+	font-weight: 600;
+}
+
+input#input {
+	padding: 10px;
+	width: 70%;
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+}
+input#save {
+	font-size: 16px;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+	padding: 5px;
+	margin-right: 5px;
+}
+form {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.choose {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: #fff3e1;
+	width: 50%;
+	align-self: center;
+	border: 2px solid rgb(250, 225, 140);
+	border-radius: 10px;
+}
+p {
+	background-color: #ffe6c1;
+	width: 200px;
+	height: 40px;
+	border: 3px solid rgb(253, 224, 144);
+	border-radius: 6px;
+	font-weight: 600;
+	text-align: center;
+	line-height: 35px;
+}
+.chooseButtons {
+	display: flex;
+	gap: 20px;
+	width: 200px;
+	justify-content: center;
+}
+
+.counters {
+	display: flex;
+	flex-direction: row;
+	border: 2px solid rgb(255, 211, 145);
+	border-radius: 6px;
+	margin-top: 10px;
+	justify-content: space-around;
+}
+.singleCounter {
+	padding: 5px;
+	font-weight: 400;
+}
