@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./css/Input.module.css";
+import styles from ".//../css/Input.module.css";
 
 export default function Input({ setTaskList, editedTask }) {
 	const [task, setTask] = useState("");

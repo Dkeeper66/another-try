@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./css/DeletAll.module.css";
+import styles from ".//../css/DeletAll.module.css";
 
 export default function DeleteAll({ setTaskList, setEditedTask }) {
 	const [showDelete, setShowDelete] = useState(false);

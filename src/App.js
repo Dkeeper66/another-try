@@ -1,10 +1,10 @@
 import "./css/App.css";
 import React, { useState } from "react";
-import Counters from "./Counter";
-import ListItems from "./ListItems";
-import Input from "./Input";
-import ControlButtons from "./ControlButtons";
-import DeleteAll from "./DeleteAll";
+import Counters from "./components/Counter";
+import ListItems from "./components/ListItems";
+import Input from "./components/Input";
+import ControlButtons from "./components/ControlButtons";
+import DeleteAll from "./components/DeleteAll";
 
 export default function App() {
 	const [taskList, setTaskList] = useState([]);

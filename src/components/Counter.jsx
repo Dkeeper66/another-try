@@ -1,4 +1,4 @@
-import styles from "./css/Counters.module.css";
+import styles from ".//../css/Counters.module.css";
 
 export default function Counters({ taskList }) {
 	const doneCount = taskList.filter((task) => task.status === true).length;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./css/ControlButtons.module.css";
+import styles from ".//../css/ControlButtons.module.css";
 
 export default function ControlButtons({
 	taskList,
