@@ -20,11 +20,13 @@ ul {
 }
 
 .trueTask {
-	text-decoration: line-through;
 	color: green;
 	width: 500px;
 	display: flex;
 	flex-direction: row;
+}
+.lineThrough {
+	text-decoration: line-through;
 }
 .falseTask {
 	color: red;

@@ -55,7 +55,13 @@ export default function ListItems({
 					<div>
 						<li className={`${status ? styles.trueTask : styles.falseTask}`}>
 							{showEdit !== id ? (
-								<span className={styles.taskName}>{name}</span>
+								<span
+									className={`${styles.taskName} ${
+										status ? styles.lineThrough : ""
+									}`}
+								>
+									{name}
+								</span>
 							) : (
 								<form onSubmit={handleSave}>
 									<textarea
