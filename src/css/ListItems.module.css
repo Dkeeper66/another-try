@@ -43,6 +43,7 @@ ul {
 	margin-bottom: 10px;
 	gap: 10px;
 	overflow: scroll;
+	height: auto;
 }
 .singleTask[hidden] {
 	display: none !important;
@@ -82,6 +83,16 @@ li {
 	border-radius: 6px;
 	padding: 5px;
 	margin-right: 5px;
+	width: 340px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	min-height: 40px;
+	resize: none;
+	max-height: 200px;
+	resize: vertical;
+	overflow: auto;
 }
 .checkbox:hover {
 	cursor: pointer;

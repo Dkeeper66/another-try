@@ -54,7 +54,24 @@ export default function ListItems({
 				<div className={styles.singleTask} hidden={hiddenStatus}>
 					<div>
 						<li className={`${status ? styles.trueTask : styles.falseTask}`}>
-							<span className={styles.taskName}>{name}</span>
+							{showEdit !== id ? (
+								<span className={styles.taskName}>{name}</span>
+							) : (
+								<form onSubmit={handleSave}>
+									<textarea
+										className={styles.inputSave}
+										type="text"
+										autoComplete="off"
+										placeholder={name}
+										value={task}
+										onChange={(e) => setTask(e.target.value)}
+									></textarea>
+									<button className={styles.saveButton} type="submit">
+										Save
+									</button>
+								</form>
+							)}
+
 							<span className={styles.taskStatus}>
 								{status ? "Completed" : "Not completed"}
 							</span>
@@ -67,28 +84,13 @@ export default function ListItems({
 						onChange={() => toggleStatus(id)}
 					></input>
 					<div>
-						{showEdit !== id && (
-							<button type="button" onClick={() => handleEdit({ name, id })}>
-								Edit
-							</button>
-						)}
-					</div>
-					<div>
-						{showEdit === id && (
-							<form onSubmit={handleSave}>
-								<input
-									className={styles.inputSave}
-									type="text"
-									autoComplete="off"
-									placeholder={name}
-									value={task}
-									onChange={(e) => setTask(e.target.value)}
-								></input>
-								<button className={styles.saveButton} type="submit">
-									Save
-								</button>
-							</form>
-						)}
+						<button
+							type="button"
+							disabled={showEdit === id}
+							onClick={() => handleEdit({ name, id })}
+						>
+							Edit
+						</button>
 					</div>
 					<button
 						type="button"
